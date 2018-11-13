@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+</head>
+<body>
+    <script>
+        // map
+        var arr =[1,3,5];
+        var newArr = arr.map(function(curr){
+            var obj= {};
+            obj['key'] = curr;
+            return obj;
+        });
+        console.log(newArr); // [{key:1}, {key:3}, {key:5}]
+        
+        var newArr2 = arr.map(function(curr){
+            var obj = {};
+            obj['key'] = curr*2;
+            return obj;
+        });
+        console.log(newArr2); // [{key: 2}, {key: 6}, {key: 10}]
+
+        // filter
+        var arr = [null, false, '', 5, 10, 'hello', {}]; 
+        // falsy 값만 가져오기
+        var falsyArr = arr.filter(function(curr){
+            return !Boolean(curr);
+        });
+        console.log(falsyArr); // [null, false, ""]
+
+        // 5글자 이하인 요소만 가져오기
+        var arr = ['asd', 'asdga', 'adfgasdfasd'];
+        var belowFiveArr = arr.filter(function(curr){
+            return curr.length <= 5;
+        });
+        console.log(belowFiveArr); // ["asd", "asdga"]
+    </script>
+</body>
+</html>
