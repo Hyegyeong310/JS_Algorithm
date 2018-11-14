@@ -56,30 +56,20 @@
         var arr = [1, 30, 39, 29, 10, 13];
         var arr1 = [41, 50, 49, 69, 100, 204];
 
-        var output = arr.reduce(function (accu, curr) {
-            var result = true;
-            if(curr < 40){
-                result = false;
-            }
-            return result;
-        });
-        console.log(output); // false
-
-
         var conditionFunc = function(curr){
             return curr > 40;
         }
-        var everyFunc = function(array){
+        var everyFunc = function(array, callback){
             var result = true;
             array.reduce(function(accu, curr){
-                if(!conditionFunc(curr)){
+                if(!callback(curr)){
                     result = false;
                 }
             });
             return result;
         }
 
-        var output = everyFunc(arr1);
+        var output = everyFunc(arr1, conditionFunc);
         console.log(output); // true
 
     </script>
