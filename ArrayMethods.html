@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+</head>
+
+<body>
+    <script>
+
+        // filter
+
+        // falsy 값만 가져오기
+        var arr = [null, undefined, '', 1, {}];
+        var falsyArr = arr.filter(function (curr) {
+            return !Boolean(curr);
+        });
+        console.log(falsyArr); // [null, undefined, '']
+
+        // 5글자 이하인 요소만 가져오기
+        var arr = ['asd', 'asdga', 'adfgasdfasd'];
+        var belowFiveArr = arr.filter(function (curr) {
+            return curr.length <= 5;
+        });
+        console.log(belowFiveArr); // ["asd", "asdga"]
+
+
+        // map
+        var arr = ['hello', 'world'];
+        var newArr = arr.map(function (curr, index) {
+            var obj = {};
+            obj[index] = curr;
+            return obj;
+        });
+        console.log(newArr); // [{0:'hello'}, {1:'world}];
+
+        var arr = [1, 3, 5];
+        var newArr2 = arr.map(function (curr) {
+            var obj = {};
+            obj['key'] = curr * 2;
+            return obj;
+        });
+        console.log(newArr2); // [{key: 2}, {key: 6}, {key: 10}]
+
+
+        // reduce
+        var arr = [[1, 3, 4], [2, 3]];
+        var flattenArr = arr.reduce(function (accu, curr) {
+            return accu.concat(curr);
+        });
+        console.log(flattenArr); //  [1, 3, 4, 2, 3]
+
+
+        // reduce를 이용해서 every 구현하기
+        var arr = [1, 30, 39, 29, 10, 13];
+        var arr1 = [41, 50, 49, 69, 100, 204];
+
+        var output = arr.reduce(function (accu, curr) {
+            var result = true;
+            if(curr < 40){
+                result = false;
+            }
+            return result;
+        });
+        console.log(output); // false
+
+
+        var conditionFunc = function(curr){
+            return curr > 40;
+        }
+        var everyFunc = function(array){
+            var result = true;
+            array.reduce(function(accu, curr){
+                if(!conditionFunc(curr)){
+                    result = false;
+                }
+            });
+            return result;
+        }
+
+        var output = everyFunc(arr1);
+        console.log(output); // true
+
+    </script>
+</body>
+
+</html>
