@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Prime Mover</title>
+</head>
+
+<body>
+    <script>
+
+        // 소수 판별하는 함수를 따로 뺄 수 있음.
+        // 재활용성, 명확성 > 가독성
+        // 종속화 시키지 말 것. 추상화. 
+        // 기능별로 함수를 분리할 것
+
+        // user 입력
+        var userInput = prompt("Enter a num:");
+
+        // 소수판별 함수
+        var checkPrime = function (num) {
+            for (var i = 2; i < num; i++) {
+                if (num % i === 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        // 소수 배열 만든 후 입력받은 num 번째 수 리턴
+        var primeMover = function (num) {
+            // Your code here
+            var arr = [];
+            var i = 2;
+            while (arr.length < num) {
+                if (checkPrime(i)) {
+                    arr.push(i);
+                }
+                i++;
+            }
+            return arr[arr.length - 1];
+        }
+
+        console.log(primeMover(userInput));
+
+    </script>
+</body>
+
+</html>
